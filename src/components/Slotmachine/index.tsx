@@ -9,17 +9,23 @@ export type Slots = StoppedSlots | IncompleteSlots;
 
 type SlotmachineProps = Readonly<{
   symbols: readonly string[];
+  expected: readonly string[];
   onStopped: (result: StoppedSlots) => void;
 }>;
 
 export const Slotmachine: React.FC<SlotmachineProps> = ({
   symbols: _symbols,
+  expected,
   onStopped,
 }) => {
   // explicitly *freeze* symbols with initial value
   const [symbols] = useState(_symbols);
-  const isStopped = (slots: Slots): slots is StoppedSlots =>
-    slots.length === symbols.length && [...slots].every((s) => s !== undefined);
+  const isStopped: (slots: Slots) => slots is StoppedSlots = useCallback(
+    (slots: Slots): slots is StoppedSlots =>
+      slots.length === symbols.length &&
+      [...slots].every((s) => s !== undefined),
+    [symbols.length]
+  );
   const [machineState, setMachineState] = useState<"rolling" | "stopped">(
     "stopped"
   );
@@ -30,7 +36,7 @@ export const Slotmachine: React.FC<SlotmachineProps> = ({
       return;
     }
     console.log(results);
-    if (currentResults.join("-") === "ma-sa-wa-da") {
+    if (currentResults.join("-") === expected.join("-")) {
       // success!
       window.alert("success!");
     } else {
@@ -40,7 +46,7 @@ export const Slotmachine: React.FC<SlotmachineProps> = ({
     // reset status
     results.current = [];
     setMachineState("stopped");
-  }, []);
+  }, [expected, isStopped, onStopped]);
   // generally we should not call hooks inside conditional statements (symbols.map) to keep orders of hooks called.
   // but here we've been freezed symbols, therefore we can stabilize call order, so I believe this is safe.
   const onStops = symbols.map((_v, i) =>

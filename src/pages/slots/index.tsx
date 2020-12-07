@@ -9,6 +9,7 @@ const SlotPage: React.FC = () => {
   const onStopped = (slots: StoppedSlots): void => setStoppedSlots(slots);
   const symbols = ["ma", "sa", "wa", "da"] as const;
   // const symbols = ["ma", "sa", "wa", "pa", "pi", "x"] as const;
+  const expected = ["ma", "sa", "wa", "da"] as const;
 
   return (
     <div>
@@ -17,7 +18,11 @@ const SlotPage: React.FC = () => {
       </Head>
       <h1>masawada slot!!</h1>
       <hr />
-      <Slotmachine symbols={symbols} onStopped={onStopped} />
+      <Slotmachine
+        symbols={symbols}
+        expected={expected}
+        onStopped={onStopped}
+      />
       <ShareResultButton result={stoppedSlots} />
       <hr />
       <Footer />
