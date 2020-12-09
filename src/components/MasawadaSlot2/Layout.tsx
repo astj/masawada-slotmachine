@@ -11,7 +11,7 @@ export const Layout: React.FC<LayoutProps> = ({ renderSlot, renderShare }) => {
   return (
     <div>
       <Head>
-        <title>masawada slot 2 result!!!</title>
+        <title>masawada slot 2</title>
       </Head>
       <h1>masawada slot!!2</h1>
       <hr />
