@@ -41,6 +41,8 @@ const aCss = {
 export const TweetButton: FC<TweetButtonProps> = (props) => (
   <button style={buttonCss}>
     <a
+      target="_blank"
+      rel="noreferrer"
       href={`https://twitter.com/intent/tweet?${formatParameters(props)}`}
       style={aCss}
     >
