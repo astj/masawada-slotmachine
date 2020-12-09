@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { Footer } from "../../components/Footer";
+import { Footer } from "../Footer";
 
 export type LayoutProps = Readonly<{
   renderSlot: () => React.ReactElement;
