@@ -1,3 +1,4 @@
 export { useSlot } from "./hooks";
 export { Slot } from "./Slot";
-export { SlotPresenter } from "./Presenter";
+export type { SlotProps } from "./Slot";
+export { SlotContainer } from "./Container";
