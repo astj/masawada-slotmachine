@@ -1,22 +1,20 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Slot, useSlot } from "./Slot";
+import { Slots, StoppedSlots } from "./types";
+import { SlotmachinePresenterProps } from "./Presenter";
+import { useSlot } from "./Slot";
 
-export type IncompleteSlotItem = string | undefined;
-export type IncompleteSlots = Array<IncompleteSlotItem>;
-export type StoppedSlotItem = string;
-export type StoppedSlots = Array<StoppedSlotItem>;
-export type Slots = StoppedSlots | IncompleteSlots;
-
-type SlotmachineProps = Readonly<{
+export type SlotmachineContainerProps = Readonly<{
   symbols: readonly string[];
   expected: readonly string[];
   onStopped: (result: StoppedSlots) => void;
+  renderPresenter: (props: SlotmachinePresenterProps) => React.ReactElement;
 }>;
 
-export const Slotmachine: React.FC<SlotmachineProps> = ({
+export const SlotmachineContainer: React.FC<SlotmachineContainerProps> = ({
   symbols: _symbols,
   expected,
   onStopped,
+  renderPresenter,
 }) => {
   // explicitly *freeze* symbols with initial value
   const [symbols] = useState(_symbols);
@@ -65,29 +63,10 @@ export const Slotmachine: React.FC<SlotmachineProps> = ({
     setMachineState("rolling");
     propsAndStarts.forEach(({ start }) => start());
   };
-  return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            {propsAndStarts.map(({ props }) => (
-              <td key={props.initialIndex}>
-                <Slot {...props} />
-              </td>
-            ))}
-          </tr>
-          <tr>
-            <td rowSpan={symbols.length}>
-              <button
-                onClick={() => start()}
-                disabled={machineState === "rolling"}
-              >
-                start!!
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
+  const propss = propsAndStarts.map(({ props }) => props);
+  return renderPresenter({
+    propss,
+    start,
+    isRolling: machineState == "rolling",
+  });
 };
