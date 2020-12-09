@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import { Slotmachine, StoppedSlots } from "../../components/Slotmachine";
-import { Footer } from "../../components/Footer";
-import { ShareResultButton } from "../../components/ShareResultButton";
+import {
+  Slotmachine,
+  StoppedSlots,
+} from "../../components/MasawadaSlot1/Slotmachine";
+import { Footer } from "../../components/MasawadaSlot1/Footer";
+import { ShareResultButton } from "../../components/MasawadaSlot1/ShareResultButton";
 
 const SlotPage: React.FC = () => {
   const [stoppedSlots, setStoppedSlots] = useState<StoppedSlots | undefined>();
