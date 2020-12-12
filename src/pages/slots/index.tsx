@@ -4,7 +4,7 @@ import {
   Slotmachine,
   StoppedSlots,
 } from "../../components/MasawadaSlot1/Slotmachine";
-import { Footer } from "../../components/MasawadaSlot1/Footer";
+import { Footer } from "../../components/Footer";
 import { ShareResultButton } from "../../components/MasawadaSlot1/ShareResultButton";
 
 const SlotPage: React.FC = () => {
