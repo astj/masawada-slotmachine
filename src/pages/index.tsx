@@ -4,7 +4,14 @@ import Link from "next/link";
 const HomePage: React.FC = () => {
   return (
     <div>
-      <Link href="/slots/">slots</Link>
+      <ul>
+        <li>
+          <Link href="/slots/">masawada slot</Link>
+        </li>
+        <li>
+          <Link href="/slots2.html">マサワダスロット</Link>
+        </li>
+      </ul>
     </div>
   );
 };
