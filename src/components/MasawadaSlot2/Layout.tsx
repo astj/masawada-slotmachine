@@ -27,6 +27,7 @@ export const Layout: React.FC<LayoutProps> = ({
         <title>{pageTitle}</title>
         <link rel="canonical" href={`${router.basePath}/slot2`} />
         <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content="マ→サ→ワ→ダでマサワダ完成" />
         {twitterImagePath !== undefined && (
           <>
             <meta property="og:image" content={imageFullPath} />
