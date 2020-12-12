@@ -62,7 +62,12 @@ const SlotPage: React.FC = () => {
     />
   );
 
-  return <Layout renderSlot={renderSlot} />;
+  return (
+    <Layout
+      twitterImagePath={`/public/thumbnails/${result.join("")}.png`}
+      renderSlot={renderSlot}
+    />
+  );
 };
 
 export default SlotPage;

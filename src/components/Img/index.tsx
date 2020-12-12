@@ -8,10 +8,11 @@ type ImgProps = JSX.IntrinsicElements["img"];
  * @param props same as <img>
  */
 export const Img: React.FC<ImgProps> = (props) => {
-  const basePath = nextConfig.basePath; // see assetPrefix if nextConfig has it
-  const src =
-    props.src != undefined && props.src.startsWith("/")
-      ? `${basePath}${props.src}`
-      : props.src;
+  const src = props.src !== undefined ? genImageUrl(props.src) : undefined;
   return <img {...props} src={src} />;
 };
+
+export function genImageUrl(src: string): string {
+  const basePath = nextConfig.basePath; // see assetPrefix if nextConfig has it
+  return src.startsWith("/") ? `${basePath}${src}` : src;
+}

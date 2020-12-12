@@ -12,6 +12,7 @@ const SlotPage: React.FC = () => {
 
   return (
     <Layout
+      twitterImagePath="/public/thumbnails/masawada.png"
       renderSlot={() => <Slotmachine onStopped={onStopped} />}
       renderShare={() =>
         stoppedSlots ? (
