@@ -21,11 +21,9 @@ export const ShareResultButton: FC<ShareResultButtonProps> = ({ result }) => {
   const router = useRouter();
   const url =
     result !== undefined
-      ? `${window.location.origin}${[
-          router.basePath,
-          "slots2.html",
-          ...result,
-        ].join("/")}`
+      ? `${window.location.origin}${[router.basePath, "slots2", ...result].join(
+          "/"
+        )}`
       : window.location.href;
   return result !== undefined ? (
     <TweetButton
