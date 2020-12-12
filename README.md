@@ -1,6 +1,7 @@
 # masawada-slotmachine
 
-https://astj.github.io/masawada-slotmachine/slots.html
+1: https://astj.github.io/masawada-slotmachine/slots.html
+2: https://astj.github.io/masawada-slotmachine/slots2.html
 
 ## develop
 
@@ -8,7 +9,9 @@ https://astj.github.io/masawada-slotmachine/slots.html
 yarn dev
 ```
 
-Then see http://localhost:3000/masawada-slotmachine/slots
+Then see:
+- http://localhost:3000/masawada-slotmachine/slots for slot1
+- http://localhost:3000/masawada-slotmachine/slots2 for slot2
 
 ## deploy
 
