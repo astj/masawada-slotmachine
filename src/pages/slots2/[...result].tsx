@@ -68,7 +68,7 @@ const SlotPage: React.FC = () => {
 
   return (
     <Layout
-      twitterImagePath={`/public/thumbnails/${result.join("")}.png`}
+      twitterImagePath={`/thumbnails/${result.join("")}.png`}
       renderSlot={renderSlot}
     />
   );
