@@ -7,6 +7,16 @@ type ShareResultButtonProps = {
   readonly result?: StoppedSlots;
 };
 
+function transformResult(result: StoppedSlots): string {
+  const katakanizeMap = {
+    ma: "マ",
+    sa: "サ",
+    wa: "ワ",
+    da: "ダ",
+  } as const;
+  return result.map((r) => katakanizeMap[r]).join("→");
+}
+
 export const ShareResultButton: FC<ShareResultButtonProps> = ({ result }) => {
   const router = useRouter();
   const url =
@@ -17,7 +27,7 @@ export const ShareResultButton: FC<ShareResultButtonProps> = ({ result }) => {
       : window.location.href;
   return result !== undefined ? (
     <TweetButton
-      message={result.join("→")}
+      message={transformResult(result)}
       url={url}
       hashtags={["masawadaslot"]}
     />
