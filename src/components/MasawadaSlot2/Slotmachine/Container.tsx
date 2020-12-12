@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { masawadaSymbols, Slots, StoppedSlots } from "./types";
+import { MasawadaSymbol, masawadaSymbols, Slots, StoppedSlots } from "./types";
 import { SlotmachinePresenterProps } from "./Presenter";
 import { useSlot } from "./Slot";
 
@@ -46,7 +46,7 @@ export const SlotmachineContainer: React.FC<SlotmachineContainerProps> = ({
   // but here we've been freezed symbols, therefore we can stabilize call order, so I believe this is safe.
   const onStops = symbols.map((_v, i) =>
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useCallback((symbol: string) => {
+    useCallback((symbol: MasawadaSymbol) => {
       results.current[i] = symbol;
       checkResult();
     }, [])

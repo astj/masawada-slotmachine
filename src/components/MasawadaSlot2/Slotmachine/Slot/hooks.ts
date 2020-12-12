@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
-import { masawadaSymbols } from "../types";
+import { MasawadaSymbol, masawadaSymbols } from "../types";
 import { SlotProps } from "./Slot";
 
 type UseSlotPropsParams = Readonly<{
-  initialSymbol: string;
-  onStop: (symbol: string) => void;
+  initialSymbol: MasawadaSymbol;
+  onStop: (symbol: MasawadaSymbol) => void;
 }>;
 
 export const useSlot: (
