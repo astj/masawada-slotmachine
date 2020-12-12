@@ -12,6 +12,7 @@ export const Img: React.FC<ImgProps> = (props) => {
   return <img {...props} src={src} />;
 };
 
+// TODO: we may use router.basePath by `useRouter` ?
 export function genImageUrl(src: string): string {
   const basePath = nextConfig.basePath; // see assetPrefix if nextConfig has it
   return src.startsWith("/") ? `${basePath}${src}` : src;
