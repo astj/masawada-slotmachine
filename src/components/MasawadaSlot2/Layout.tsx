@@ -17,6 +17,10 @@ export const Layout: React.FC<LayoutProps> = ({
 }) => {
   const router = useRouter();
   const pageTitle = "マサワダスロット";
+  const imageFullPath =
+    twitterImagePath !== undefined
+      ? `https://astj.github.io${genImageUrl(twitterImagePath)}`
+      : "";
   return (
     <div>
       <Head>
@@ -25,13 +29,10 @@ export const Layout: React.FC<LayoutProps> = ({
         <meta property="og:title" content={pageTitle} />
         {twitterImagePath !== undefined && (
           <>
-            <meta property="og:image" content={genImageUrl(twitterImagePath)} />
+            <meta property="og:image" content={imageFullPath} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={pageTitle} />
-            <meta
-              name="twitter:image"
-              content={genImageUrl(twitterImagePath)}
-            />
+            <meta name="twitter:image" content={imageFullPath} />
           </>
         )}
       </Head>
