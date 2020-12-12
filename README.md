@@ -11,7 +11,7 @@ yarn dev
 
 Then see:
 - http://localhost:3000/masawada-slotmachine/slots for slot1
-- http://localhost:3000/masawada-slotmachine/slots2 for slot2
+- http://localhost:3000/masawada-slotmachine/slots2.html for slot2
 
 ## deploy
 
