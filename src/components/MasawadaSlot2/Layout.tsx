@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React from "react";
 import { Footer } from "../Footer";
 import { genImageUrl } from "../Img";
@@ -14,11 +15,13 @@ export const Layout: React.FC<LayoutProps> = ({
   renderShare,
   twitterImagePath,
 }) => {
+  const router = useRouter();
   const pageTitle = "マサワダスロット";
   return (
     <div>
       <Head>
         <title>{pageTitle}</title>
+        <link rel="canonical" href={`${router.basePath}/slot2`} />
         {twitterImagePath !== undefined && (
           <>
             <meta name="twitter:card" content="summary_large_image" />
