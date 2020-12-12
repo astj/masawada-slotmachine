@@ -39,6 +39,9 @@ const SlotPage: React.FC = () => {
   const router = useRouter();
   const { result: _result } = router.query;
   const result = (_result ?? ["ma", "sa", "wa", "da"]) as MasawadaSymbol[];
+  const onButtonClick = () => {
+    router.push("/slots2");
+  };
 
   const renderMa: SlotLayoutProps["renderMa"] = () => (
     <SlotView symbol={result[0]} />
@@ -58,7 +61,8 @@ const SlotPage: React.FC = () => {
       renderSa={renderSa}
       renderWa={renderWa}
       renderDa={renderDa}
-      buttonDisabled={true}
+      onButtonClick={onButtonClick}
+      buttonDisabled={false}
     />
   );
 

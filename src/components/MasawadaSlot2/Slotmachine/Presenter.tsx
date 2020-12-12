@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SlotLayout, SlotLayoutProps } from "./Layout";
 import { Slot, SlotProps } from "./Slot";
 
@@ -13,6 +13,10 @@ export const SlotmachinePresenter: React.FC<SlotmachinePresenterProps> = ({
   isRolling,
   start,
 }) => {
+  // start slot on page load
+  useEffect(() => {
+    start();
+  }, []);
   const renderMa: SlotLayoutProps["renderMa"] = () => <Slot {...propss[0]} />;
   const renderSa: SlotLayoutProps["renderSa"] = () => <Slot {...propss[1]} />;
   const renderWa: SlotLayoutProps["renderWa"] = () => <Slot {...propss[2]} />;
