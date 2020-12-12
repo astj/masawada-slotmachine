@@ -25,7 +25,7 @@ export const Layout: React.FC<LayoutProps> = ({
         <meta property="og:title" content={pageTitle} />
         {twitterImagePath !== undefined && (
           <>
-            <meta property="og:image" content={twitterImagePath} />
+            <meta property="og:image" content={genImageUrl(twitterImagePath)} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={pageTitle} />
             <meta
