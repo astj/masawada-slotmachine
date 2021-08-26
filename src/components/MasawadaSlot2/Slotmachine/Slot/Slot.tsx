@@ -1,6 +1,6 @@
 import React from "react";
-import { SlotPresenter } from "./Presenter";
 import { SlotContainer, SlotContainerProps } from "./Container";
+import { SlotPresenter } from "./Presenter";
 export { SlotView } from "./View";
 
 export type SlotProps = Omit<SlotContainerProps, "renderPresenter" | "symbols">;

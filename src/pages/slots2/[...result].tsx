@@ -1,16 +1,16 @@
-import React from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import React from "react";
+import { Layout, LayoutProps } from "../../components/MasawadaSlot2/Layout";
 import {
   SlotLayout,
   SlotLayoutProps,
 } from "../../components/MasawadaSlot2/Slotmachine/Layout";
 import { SlotView } from "../../components/MasawadaSlot2/Slotmachine/Slot";
-import { Layout, LayoutProps } from "../../components/MasawadaSlot2/Layout";
 import {
   MasawadaSymbol,
   masawadaSymbols,
 } from "../../components/MasawadaSlot2/Slotmachine/types";
-import { GetStaticPaths, GetStaticProps } from "next";
 
 function expandNext(prev: MasawadaSymbol[][]): MasawadaSymbol[][] {
   return prev.flatMap((list) =>
@@ -55,6 +55,9 @@ const SlotPage: React.FC = () => {
   const renderDa: SlotLayoutProps["renderDa"] = () => (
     <SlotView symbol={result[3]} />
   );
+  const renderRefreshRateInput: SlotLayoutProps["renderRefreshRateInput"] = () => (
+    <></>
+  );
   const renderSlot: LayoutProps["renderSlot"] = () => (
     <SlotLayout
       renderMa={renderMa}
@@ -63,6 +66,7 @@ const SlotPage: React.FC = () => {
       renderDa={renderDa}
       onButtonClick={onButtonClick}
       buttonDisabled={false}
+      renderRefreshRateInput={renderRefreshRateInput}
     />
   );
 

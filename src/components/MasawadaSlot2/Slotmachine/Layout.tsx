@@ -7,6 +7,7 @@ export type SlotLayoutProps = Readonly<{
   renderDa: () => React.ReactElement;
   buttonDisabled: boolean;
   onButtonClick?: () => void;
+  renderRefreshRateInput: () => React.ReactElement;
 }>;
 
 const buttonBaseCss = {
@@ -27,6 +28,7 @@ export const SlotLayout: React.FC<SlotLayoutProps> = ({
   renderDa,
   onButtonClick,
   buttonDisabled,
+  renderRefreshRateInput,
 }) => {
   const buttonCss = {
     ...buttonBaseCss,
@@ -52,6 +54,7 @@ export const SlotLayout: React.FC<SlotLayoutProps> = ({
         <button style={buttonCss} onClick={onButtonClick}>
           START!
         </button>
+        {renderRefreshRateInput()}
       </div>
     </div>
   );

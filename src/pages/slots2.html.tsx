@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Layout } from "../components/MasawadaSlot2/Layout";
-import {
-  StoppedSlots,
-  Slotmachine,
-} from "../components/MasawadaSlot2/Slotmachine";
 import { ShareResultButton } from "../components/MasawadaSlot2/ShareResultButton";
+import {
+  Slotmachine,
+  StoppedSlots,
+} from "../components/MasawadaSlot2/Slotmachine";
 
 const SlotPage: React.FC = () => {
   const [stoppedSlots, setStoppedSlots] = useState<StoppedSlots | undefined>();

@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
-import { MasawadaSymbol, masawadaSymbols, Slots, StoppedSlots } from "./types";
 import { SlotmachinePresenterProps } from "./Presenter";
 import { useSlot } from "./Slot";
+import { MasawadaSymbol, masawadaSymbols, Slots, StoppedSlots } from "./types";
 
 export type SlotmachineContainerProps = Readonly<{
   expected: readonly string[];
@@ -42,6 +42,7 @@ export const SlotmachineContainer: React.FC<SlotmachineContainerProps> = ({
     results.current = [];
     setMachineState("stopped");
   }, [expected, isStopped, onStopped]);
+  const [refreshRate, setRefreshRate] = useState(100);
   // generally we should not call hooks inside conditional statements (symbols.map) to keep orders of hooks called.
   // but here we've been freezed symbols, therefore we can stabilize call order, so I believe this is safe.
   const onStops = symbols.map((_v, i) =>
@@ -65,5 +66,11 @@ export const SlotmachineContainer: React.FC<SlotmachineContainerProps> = ({
     propss,
     start,
     isRolling: machineState == "rolling",
+    refreshRateInputProps: {
+      refreshRate,
+      onChangeRefreshRate: (newValue) => {
+        setRefreshRate(newValue);
+      },
+    },
   });
 };
