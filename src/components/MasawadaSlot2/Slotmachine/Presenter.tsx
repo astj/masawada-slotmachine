@@ -16,22 +16,22 @@ export const SlotmachinePresenter: React.FC<SlotmachinePresenterProps> = ({
   start,
   refreshRateInputProps,
 }) => {
-  const { refreshRate } = refreshRateInputProps;
+  const { refreshRateFrame } = refreshRateInputProps;
   // start slot on page load
   useEffect(() => {
     start();
   }, []);
   const renderMa: SlotLayoutProps["renderMa"] = () => (
-    <Slot {...propss[0]} refreshRate={refreshRate} />
+    <Slot {...propss[0]} refreshRateFrame={refreshRateFrame} />
   );
   const renderSa: SlotLayoutProps["renderSa"] = () => (
-    <Slot {...propss[1]} refreshRate={refreshRate} />
+    <Slot {...propss[1]} refreshRateFrame={refreshRateFrame} />
   );
   const renderWa: SlotLayoutProps["renderWa"] = () => (
-    <Slot {...propss[2]} refreshRate={refreshRate} />
+    <Slot {...propss[2]} refreshRateFrame={refreshRateFrame} />
   );
   const renderDa: SlotLayoutProps["renderDa"] = () => (
-    <Slot {...propss[3]} refreshRate={refreshRate} />
+    <Slot {...propss[3]} refreshRateFrame={refreshRateFrame} />
   );
   const renderRefreshRateInput: SlotLayoutProps["renderRefreshRateInput"] = () => (
     <RefreshRateInput {...refreshRateInputProps} />

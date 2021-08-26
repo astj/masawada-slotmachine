@@ -7,7 +7,7 @@ export type SlotContainerProps = Readonly<{
   state: "rolling" | "stopped";
   onStop: (newIndex: number) => void;
   renderPresenter: (props: SlotPresenterProps) => React.ReactElement;
-  refreshRate: number;
+  refreshRateFrame: number;
 }>;
 
 export const SlotContainer: React.FC<SlotContainerProps> = ({
@@ -15,7 +15,7 @@ export const SlotContainer: React.FC<SlotContainerProps> = ({
   state,
   onStop,
   renderPresenter,
-  refreshRate,
+  refreshRateFrame,
 }) => {
   const symbols = masawadaSymbols;
   const interval = useRef<ReturnType<Window["setInterval"]> | undefined>(
@@ -39,14 +39,14 @@ export const SlotContainer: React.FC<SlotContainerProps> = ({
     if (state === "rolling") {
       interval.current = window.setInterval(() => {
         setNextIndex();
-      }, refreshRate);
+      }, (refreshRateFrame / 60) * 1000);
     }
     return () => {
       if (interval.current) {
         window.clearInterval(interval.current);
       }
     };
-  }, [setNextIndex, state, refreshRate]);
+  }, [setNextIndex, state, refreshRateFrame]);
   const stop = () => {
     window.clearInterval(interval.current);
     onStop(index);
