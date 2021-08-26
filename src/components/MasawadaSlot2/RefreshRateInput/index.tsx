@@ -22,11 +22,13 @@ export interface RefreshRateInputProps {
 
 const frames: RefreshRateFrame[] = [1, 6, 10];
 
-const difficulty: Record<RefreshRateFrame, string> = {
+export const difficultyByFrame: Record<RefreshRateFrame, string> = {
   1: "げきムズ",
   6: "ふつう",
   10: "やさしい",
 };
+
+export type Difficulty = typeof difficultyByFrame[RefreshRateFrame];
 
 export const RefreshRateInput: FC<RefreshRateInputProps> = (props) => {
   const handleRadio: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -48,7 +50,7 @@ export const RefreshRateInput: FC<RefreshRateInputProps> = (props) => {
               value={frame}
               onChange={handleRadio}
             />
-            {difficulty[frame]} ({frame}F)
+            {difficultyByFrame[frame]} ({frame}F)
           </label>
         ))}
       </div>

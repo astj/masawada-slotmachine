@@ -1,12 +1,16 @@
 import React, { useCallback, useRef, useState } from "react";
-import { RefreshRateFrame } from "../RefreshRateInput";
+import {
+  Difficulty,
+  difficultyByFrame,
+  RefreshRateFrame,
+} from "../RefreshRateInput";
 import { SlotmachinePresenterProps } from "./Presenter";
 import { useSlot } from "./Slot";
 import { MasawadaSymbol, masawadaSymbols, Slots, StoppedSlots } from "./types";
 
 export type SlotmachineContainerProps = Readonly<{
   expected: readonly string[];
-  onStopped: (result: StoppedSlots) => void;
+  onStopped: (result: StoppedSlots, difficulty: Difficulty) => void;
   renderPresenter: (props: SlotmachinePresenterProps) => React.ReactElement;
 }>;
 
@@ -26,6 +30,7 @@ export const SlotmachineContainer: React.FC<SlotmachineContainerProps> = ({
     "stopped"
   );
   const results = useRef<Slots>([]);
+  const [refreshRateFrame, setRefreshRateFrame] = useState<RefreshRateFrame>(6);
   const checkResult = useCallback(() => {
     const currentResults = results.current;
     if (!isStopped(currentResults)) {
@@ -38,12 +43,11 @@ export const SlotmachineContainer: React.FC<SlotmachineContainerProps> = ({
     } else {
       window.alert("残念でした！");
     }
-    onStopped(currentResults);
+    onStopped(currentResults, difficultyByFrame[refreshRateFrame]);
     // reset status
     results.current = [];
     setMachineState("stopped");
-  }, [expected, isStopped, onStopped]);
-  const [refreshRateFrame, setRefreshRateFrame] = useState<RefreshRateFrame>(6);
+  }, [expected, isStopped, onStopped, refreshRateFrame]);
   // generally we should not call hooks inside conditional statements (symbols.map) to keep orders of hooks called.
   // but here we've been freezed symbols, therefore we can stabilize call order, so I believe this is safe.
   const onStops = symbols.map((_v, i) =>
